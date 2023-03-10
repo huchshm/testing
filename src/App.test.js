@@ -1,8 +1,20 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App"
+import "@testing-library/jest-dom";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+describe("app page",()=>{
+    beforeEach(() => {
+        render(<App />);
+      });
+    it("should render list",()=>{
+        const listitems = screen.getAllByRole("listitem");
+        expect(listitems).toHaveLength(3);
+    })
+})
+
+// test("list",()=>{
+//     render(<App />)
+//     const listitems = screen.getAllByRole("listitem");
+//     expect(listitems).toHaveLength(3);
+// })
